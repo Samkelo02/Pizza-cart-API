@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="stylesheet.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="pizza-cart-api.js"></script>
+    
+    
+    <script>
+
+        //axios.get('https://pizza-cart-api.herokuapp.com/api/pizzas')
+        //.then((result) => {
+         //   console.log(result.data);
+        //})
+    </script>
+    <style>
+        body {
+            background-color:dodgerblue;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div x-data="pizzaCartWithAPIWidget" >
+ 
+
+    <div x-text="message"></div>
+    <div x-text="cartId"></div>
+
+    <h2>Pizzas to order</h2>
+    <div>
+    Who is buying the pizzas<input type="text" x-model="username">
+</div>
+
+    <strong x-text="pizzas.length"></strong>
+
+    <table>
+        <template x-for="pizza in pizzas">
+        <tr>
+            <td>
+                <img x-bind:src="pizzaImage(pizza)" alt="">
+            </td>
+            <td x-text="pizza.flavour"></td>
+            <td x-text="pizza.size"></td>
+            <td x-text="pizza.price" ></td>
+            <td>
+            <button @click="add(pizza)">Buy</button>
+            </td>
+        </tr>
+
+    </template>
+</table>
+</div>
+</body>
+</html>
